@@ -83,13 +83,15 @@ public class Main {
 
     private static void showHelpCreate() {
         System.out.println("\tperson  creates a new phone book record");
-        System.out.println("\tlist    list all created records");
+        System.out.println("\tnote    creates a new note record");
         System.out.println("\texit    returns to main menu");
     }
 
     private static void showHelp() {
         System.out.println("\thelp    shows this help");
         System.out.println("\tcreate  creates a new record");
+        System.out.println("\tlist    lists all records");
+        System.out.println("\tfind    searches for text");
         System.out.println("\texit    exit from the program");
     }
 
