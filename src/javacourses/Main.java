@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
-    static ArrayList<Person> records = new ArrayList<>();
+    static ArrayList<Record> records = new ArrayList<>();
 
     public static void main(String[] args) {
         commandLoop();
@@ -22,6 +22,9 @@ public class Main {
                 case "create":
                     create();
                     break;
+                case "find":
+                    find();
+                    break;
                 case "list":
                     list();
                     break;
@@ -35,8 +38,17 @@ public class Main {
     }
 
     private static void list() {
-        for (Person p : records) {
-            System.out.println(p);
+        for (Record r : records) {
+            System.out.println(r);
+        }
+    }
+
+    private static void find() {
+        String part = askString("What to find? ");
+        for (Record r : records) {
+            if (r.contains(part)) {
+                System.out.println(r);
+            }
         }
     }
 
@@ -49,7 +61,10 @@ public class Main {
                 case "exit":
                     return;
                 case "person":
-                    createPerson();
+                    addRecord(new Person());
+                    return;
+                case "note":
+                    addRecord(new Note());
                     return;
                 case "help":
                     showHelpCreate();
@@ -58,6 +73,12 @@ public class Main {
                     System.out.println("Unknown type");
             }
         }
+    }
+
+    private static void addRecord(Record record) {
+        record.askUserData();
+        records.add(record);
+        System.out.println("Created!");
     }
 
     private static void showHelpCreate() {
@@ -72,24 +93,7 @@ public class Main {
         System.out.println("\texit    exit from the program");
     }
 
-    private static void createPerson() {
-        String firstName = askString("First Name: ");
-        String lastName = askString("Last Name: ");
-        String phone = askString("Phone: ");
-        String email = askString("Email: ");
-
-        Person person = new Person();
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
-        person.setPhone(phone);
-        person.setEmail(email);
-
-        records.add(person);
-
-        System.out.println("Created!");
-    }
-
-    private static String askString(String message) {
+    public static String askString(String message) {
         System.out.print(message);
         String str = scanner.next();
         if (str.startsWith("\"")) {
