@@ -1,21 +1,9 @@
 package javacourses;
 
-public class Person {
-    private static int counter = 0;
-    private int id;
+public class Person extends Record {
     private String firstName;
     private String lastName;
     private String phone;
-
-    public Person() {
-        counter++;
-        id = counter;
-    }
-
-
-    public int getId() {
-        return id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -44,10 +32,10 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phone='" + phone + '\'' +
-                "}  Persons Count: " + counter;
+                "}";
     }
 }
