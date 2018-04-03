@@ -56,6 +56,8 @@ public class Person extends Record {
         String phone = Main.askString("Phone: ");
         String email = Main.askString("Email: ");
 
+
+
         setFirstName(firstName);
         setLastName(lastName);
         setPhone(phone);
